@@ -4,14 +4,17 @@
   ];
   # boot.loader.systemd-boot.enable = true;
   # boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-    };
-    grub = {
-      enable = true;
-      efiSupport = true;
-      useOSProber = true;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader = {
+      efi = {
+        canTouchEfiVariables = true;
+      };
+      grub = {
+        enable = true;
+        efiSupport = true;
+        useOSProber = true;
+      };
     };
   };
 
