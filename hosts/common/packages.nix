@@ -11,16 +11,16 @@
     enable = true;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/zack/nix"; # sets NH_OS_FLAKE variable for you
+    flake = "/home/zack/nixos"; # sets NH_OS_FLAKE variable for you
   };
   fonts.packages = with pkgs; [
     source-sans
   ];
 
-  # nix.settings = {
-  #   extra-substituters = [ "https://noctalia.cachix.org" ];
-  #   extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
-  # };
+  nix.settings = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [ "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4=" ];
+  };
 
   environment.systemPackages = with pkgs; [
     # Essentials
@@ -63,6 +63,8 @@
     nixd
     nixpkgs-fmt
     android-tools
+    ruby
+    ruby-lsp # This may be doing nothing currently
 
     # Games
     prismlauncher
@@ -82,19 +84,7 @@
     loupe # Image viewer
     mpv # Video player
     ffmpeg
-    # freac
-    # flac
-    # lame
-    # TODO: Move this to in-amber-clad/packages.nix (and create that)
-    # Handbrake
-    # (writeShellApplication {
-    #   name = "handbrake";
-    #   text = ''
-    #     LD_LIBRARY_PATH=/run/opengl-driver/lib:''${LD_LIBRARY_PATH-} ${pkgs.handbrake}/bin/ghb "$@"
-    #   '';
-    # })
-  
-    gapless # Maybe just for in-amber-clad
+    gapless # Maybe just for in-amber-clad?
     calibre
     imagemagick
 
@@ -113,11 +103,7 @@
     swtpm # TPM for windows vm
   ];
   # Move some of this to per-system packages.nix
-  services.flatpak = {
-    enable = true;
-    packages = [
-      "xyz.rust4diva.Rust4Diva"
+  services.flatpak.packages = [
       "org.freac.freac"
     ];
-  };
 }

@@ -10,11 +10,14 @@
         ms-python.python
         yusifaliyevpro.vscicons
         # vscodevim.vim
-        kamadorueda.alejandra
+        # kamadorueda.alejandra
         jdinhlife.gruvbox
         arrterian.nix-env-selector
         jnoortheen.nix-ide
         johnnymorganz.stylua
+        shopify.ruby-lsp
+        fanaticpythoner.better-todo-tree
+
       ];
       userSettings = {
         "terminal.integrated.fontFamily" = "MesloLGS NF";
@@ -28,13 +31,12 @@
         "nix.serverPath" = "nixd";
         "nix.formatterPath" = "nixpkgs-fmt";
 
-        # Optional: Enable auto-formatting on saving Nix files
+        # nix formatter settings
         "[nix]" = {
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
           "editor.formatOnSave" = true;
         };
 
-        # Advanced: Give nixd context about your flake to enable Home Manager option completion
         "nix.serverSettings" = {
           "nixd" = {
             "formatting" = {

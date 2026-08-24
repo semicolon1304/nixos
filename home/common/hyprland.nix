@@ -1,6 +1,7 @@
 { inputs, pkgs, lib, ... }:
 {
   # TODO: this later
+  # Figure out how the fuck this works
   wayland.windowManager.hyprland = {
     enable = true;
     # systemd.enable = true;
