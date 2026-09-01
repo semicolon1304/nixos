@@ -5,7 +5,7 @@
     package = pkgs.vscodium;
 
     profiles.default = {
-      extensions = with pkgs.vscode-marketplace; [
+      extensions = with pkgs.nix-vscode-extensions.vscode-marketplace; [
         bbenoist.nix
         ms-python.python
         yusifaliyevpro.vscicons
@@ -17,6 +17,8 @@
         johnnymorganz.stylua
         shopify.ruby-lsp
         fanaticpythoner.better-todo-tree
+        cweijan.vscode-office
+
 
       ];
       userSettings = {

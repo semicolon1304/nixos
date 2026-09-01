@@ -72,6 +72,7 @@
     # hashedPassword = "$y$j9T$p0U92qd4AG6bvkAqSAkPq.$sEY5Es4qLrpv/xvhXBpDi.NNMwzWbt79HiOEqHJRYp6";
     # packages = with pkgs; [];
   };
+  
 
   services.displayManager.defaultSession = "hyprland";
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

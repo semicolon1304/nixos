@@ -38,8 +38,8 @@
     , home-manager
     , nixos-hardware
     , nix-flatpak
-    ,
-      ...
+    , nix-vscode-extensions
+    , ...
     } @ inputs:
     let
       lib = nixpkgs.lib;
@@ -50,9 +50,19 @@
       nixosConfigurations = {
         forward-onto-dawn = lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs system; };
+          specialArgs = { inherit inputs system nix-vscode-extensions; };
           modules = [
             ./hosts/forward-onto-dawn
+            home-manager.nixosModules.default
+            {
+              home-manager = {
+                # inherit pkgs;
+                useGlobalPkgs = false;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs pkgs; };
+                users.zack = ./home/zack;
+              };
+            }
             nixos-hardware.nixosModules.framework-16-7040-amd
             nix-flatpak.nixosModules.nix-flatpak
             inputs.distro-grub-themes.nixosModules.${system}.default
@@ -69,12 +79,14 @@
         };
       };
 
-      homeConfigurations = {
-        zack = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [ ./home/zack ];
-        };
-      };
+      # homeConfigurations = {
+      #   zack = home-manager.lib.homeManagerConfiguration {
+      #     inherit pkgs;
+      #     useGlobalPkgs = true;
+      #     useUserPackages = true;
+      #     extraSpecialArgs = { inherit inputs; };
+      #     users.zack = ./home/zack ;
+      #   };
+      # };
     };
 }

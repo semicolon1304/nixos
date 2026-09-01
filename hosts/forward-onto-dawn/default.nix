@@ -23,6 +23,7 @@
   #   };
   # };
   networking.hostName = "forward-onto-dawn";
+  
 
   hardware.amdgpu = {
     opencl.enable = true;

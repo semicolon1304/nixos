@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, nix-vscode-extensions, ... }: {
+  nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ];
 
   programs.steam.enable = true;
   programs.hyprland.enable = true; # Move to hyprland.nix
@@ -87,6 +88,7 @@
     gapless # Maybe just for in-amber-clad?
     calibre
     imagemagick
+    libreoffice-fresh
 
     # Communication
     vesktop
