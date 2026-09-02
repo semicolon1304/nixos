@@ -19,6 +19,9 @@
         LD_LIBRARY_PATH=/run/opengl-driver/lib:''${LD_LIBRARY_PATH-} ${pkgs.handbrake}/bin/ghb "$@"
       '';
     })
+
+    qbittorrent
+    actiona
   ];
   services.flatpak.packages = [
     "xyz.rust4diva.Rust4Diva"

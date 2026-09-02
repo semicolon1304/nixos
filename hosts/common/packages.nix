@@ -1,5 +1,5 @@
-{ pkgs, inputs, nix-vscode-extensions, ... }: {
-  nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ];
+{ pkgs, inputs, ... }: {
+  # nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ];
 
   programs.steam.enable = true;
   programs.hyprland.enable = true; # Move to hyprland.nix
@@ -95,7 +95,7 @@
     teams-for-linux
 
     # Misc
-    inputs.iloader.packages.${pkgs.stdenv.hostPlatform.system}.default
+    # inputs.iloader.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     hyprshot
     obsidian

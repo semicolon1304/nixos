@@ -44,13 +44,16 @@
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs { 
+        inherit system;
+        overlays = [nix-vscode-extensions.overlays.default];
+        };
     in
     {
       nixosConfigurations = {
         forward-onto-dawn = lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs system nix-vscode-extensions; };
+          specialArgs = { inherit inputs system; };
           modules = [
             ./hosts/forward-onto-dawn
             home-manager.nixosModules.default
@@ -73,6 +76,16 @@
           specialArgs = { inherit inputs system; };
           modules = [
             ./hosts/in-amber-clad
+            home-manager.nixosModules.default
+            {
+              home-manager = {
+                # inherit pkgs;
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit inputs pkgs; };
+                users.zack = ./home/zack;
+              };
+            }
             nix-flatpak.nixosModules.nix-flatpak
             inputs.distro-grub-themes.nixosModules.${system}.default
           ];

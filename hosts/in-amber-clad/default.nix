@@ -2,6 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common
+    ./packages.nix
   ];
 
   boot.loader.grub.device = "nodev";

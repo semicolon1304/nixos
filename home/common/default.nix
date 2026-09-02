@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, inputs, pkgs, ... }:
 {
   imports = [
     ./zsh.nix
@@ -10,6 +10,8 @@
     ./theme.nix
     ./xdg.nix
   ];
+  # nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ];
+
 
   # USB Automount
   services.udiskie = {
