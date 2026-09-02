@@ -22,6 +22,7 @@
 
     qbittorrent
     actiona
+    balatro-mod-manager
   ];
   services.flatpak.packages = [
     "xyz.rust4diva.Rust4Diva"

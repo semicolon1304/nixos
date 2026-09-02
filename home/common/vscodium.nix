@@ -17,7 +17,7 @@
         johnnymorganz.stylua
         shopify.ruby-lsp
         fanaticpythoner.better-todo-tree
-
+        cweijan.vscode-office 
       ];
       userSettings = {
         "terminal.integrated.fontFamily" = "MesloLGS NF";
@@ -56,15 +56,3 @@
   };
 }
 
-# bbenoist.nix                                                                                                                                   1 ✘  18:10:03  
-# ms-python.python
-# yusifaliyevpro.vscicons
-# # vscodevim.vim
-# # kamadorueda.alejandra
-# jdinhlife.gruvbox
-# arrterian.nix-env-selector
-# jnoortheen.nix-ide
-# johnnymorganz.stylua
-# shopify.ruby-lsp
-# fanaticpythoner.better-todo-tree
-# cweijan.vscode-office
