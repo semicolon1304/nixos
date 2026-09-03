@@ -15,7 +15,7 @@
       (builtins.readFile (./. + "/hypr/configs/${osConfig.networking.hostName}_monitors.lua"))
       (builtins.readFile ./hypr/configs/settings.lua)
       (builtins.readFile ./hypr/configs/windowrules.lua)
-      (builtins.readFile ./hypr/configs/workspaces.lua)
+      (builtins.readFile (./. + "/hypr/configs/${osConfig.networking.hostName}_workspaces.lua"))
     ];
     systemd.variables = [ "--all" ]; # fixes theme in dbus activated apps?
   };

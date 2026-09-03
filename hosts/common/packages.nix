@@ -103,6 +103,7 @@
     wine
     winetricks
     swtpm # TPM for windows vm
+    # winboat
   ];
   # Move some of this to per-system packages.nix
   services.flatpak.packages = [
