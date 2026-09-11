@@ -29,6 +29,7 @@
   networking.networkmanager.enable = true;
   networking.wireless.enable = true;
   networking.nameservers = [ "1.1.1.1" ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
   services.displayManager.gdm.enable = true;
@@ -46,6 +47,7 @@
   services.printing.drivers = [
     pkgs.brlaser
   ];
+  virtualisation.spiceUSBRedirection.enable = true;
 
   
   xdg.autostart.enable = true;

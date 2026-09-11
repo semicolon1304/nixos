@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, pkgs-unstable, ... }: {
   # nixpkgs.overlays = [ nix-vscode-extensions.overlays.default ];
 
   programs.steam.enable = true;
@@ -29,12 +29,11 @@
     nautilus
     nautilus-open-any-terminal
     sushi # Preview for nautilus
-    pcmanfm
     fastfetch
     home-manager
     brightnessctl
-    
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    
 
     # Terminal Utilities
     btop
@@ -52,20 +51,25 @@
     imhex
     netcat
 
+
     # Programming
-    python3
-    dotnet-aspnetcore
-    jdk
-    rustc
-    cargo
-    jetbrains.rider
-    #jetbrains.idea-oss
-    #jetbrains.rust-rover
-    nixd
-    nixpkgs-fmt
-    android-tools
-    ruby
-    ruby-lsp # This may be doing nothing currently
+      # Languages
+      python3
+      gcc
+      dotnet-aspnetcore
+      jdk
+      rustc
+      cargo
+      ruby
+    
+      # IDEs / Language Servers
+      jetbrains.rider
+      #jetbrains.idea-oss
+      #jetbrains.rust-rover
+      nixd
+      ruby-lsp # This may be doing nothing currently
+      nixpkgs-fmt
+      android-tools
 
     # Games
     prismlauncher
@@ -95,7 +99,7 @@
     teams-for-linux
 
     # Misc
-    # inputs.iloader.packages.${pkgs.stdenv.hostPlatform.system}.default
+    pkgs-unstable.iloader
     inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     hyprshot
     obsidian
@@ -103,6 +107,8 @@
     wine
     winetricks
     swtpm # TPM for windows vm
+    nixos-icons
+    spice-gtk
     # winboat
   ];
   # Move some of this to per-system packages.nix

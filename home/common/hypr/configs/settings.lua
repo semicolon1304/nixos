@@ -4,11 +4,14 @@ hl.config({
         gaps_in = 5,
         gaps_out = 10,
         resize_on_border = true,
-        layout = dwindle
+        layout = dwindle,
         -- Window snapping for floating windows, may need to turn this off
         snap = {
             enabled = true
         }
+    },
+    dwindle = {
+        preserve_split = true,
     },
     decoration = {
         rounding = 20,

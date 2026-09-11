@@ -30,6 +30,8 @@
     zluda.enable = true;
     overdrive.enable = true;
   };
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
   # boot.kernelParams = [ "button.lid_init_state=open" ];
   services.logind.settings.Login = {
   HandleLidSwitch = "suspend";

@@ -9,7 +9,7 @@ hl.bind("CTRL + ALT + Delete", hl.dsp.exit(0))
 -- Window management
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({action = "toggle"}))
-hl.bind(mainMod .. " + H", hl.dsp.layout("")) 
+hl.bind(mainMod .. " + H", hl.dsp.layout("togglesplit")) 
 hl.bind("ALT + F", hl.dsp.window.fullscreen())
 hl.bind("ALT + TAB", hl.dsp.exec_cmd("noctalia-shell ipc call plugin:workspace-overview toggle"))
 

@@ -3,32 +3,35 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    iloader = {
-      url = "github:nab138/iloader";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
     distro-grub-themes = {
       url = "github:AdisonCavani/distro-grub-themes";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
   };
 
@@ -39,6 +42,7 @@
     , nixos-hardware
     , nix-flatpak
     , nix-vscode-extensions
+    , nixpkgs-unstable
     , ...
     } @ inputs:
     let
@@ -53,7 +57,13 @@
       nixosConfigurations = {
         forward-onto-dawn = lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs system; };
+          specialArgs = { 
+            inherit inputs system;
+            pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
           modules = [
             ./hosts/forward-onto-dawn
             home-manager.nixosModules.default
@@ -73,7 +83,13 @@
         };
         in-amber-clad = lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs system; };
+          specialArgs = { 
+            inherit inputs system;
+            pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
           modules = [
             ./hosts/in-amber-clad
             home-manager.nixosModules.default
