@@ -30,6 +30,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+    
+    sops-nix = { 
+      url ="github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -39,6 +45,8 @@
     , nixos-hardware
     , nix-flatpak
     , nix-vscode-extensions
+    , nixpkgs-unstable
+    , sops-nix
     , ...
     } @ inputs:
     let
@@ -56,6 +64,7 @@
           specialArgs = { inherit inputs system; };
           modules = [
             ./hosts/forward-onto-dawn
+            sops-nix.nixosModules.sops
             home-manager.nixosModules.default
             {
               home-manager = {
@@ -76,6 +85,7 @@
           specialArgs = { inherit inputs system; };
           modules = [
             ./hosts/in-amber-clad
+            sops-nix.nixosModules.sops
             home-manager.nixosModules.default
             {
               home-manager = {
@@ -92,14 +102,5 @@
         };
       };
 
-      # homeConfigurations = {
-      #   zack = home-manager.lib.homeManagerConfiguration {
-      #     inherit pkgs;
-      #     useGlobalPkgs = true;
-      #     useUserPackages = true;
-      #     extraSpecialArgs = { inherit inputs; };
-      #     users.zack = ./home/zack ;
-      #   };
-      # };
     };
 }

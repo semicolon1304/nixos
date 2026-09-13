@@ -3,7 +3,7 @@
   imports = [
     inputs.noctalia.homeModules.default
   ];
-
+  # TODO: Fix this (I'm so good at commenting)
   programs.noctalia = {
     enable = true;
     settings = {

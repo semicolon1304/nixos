@@ -1,5 +1,4 @@
 { lib, pkgs, inputs, ... }: {
-  # nixpkgs.overlays = [ inputs.nix-vscode-extensions.overlays.default ];
   programs.vscodium = {
     enable = true;
     package = pkgs.vscodium;
@@ -10,7 +9,6 @@
         ms-python.python
         yusifaliyevpro.vscicons
         # vscodevim.vim
-        # kamadorueda.alejandra
         jdinhlife.gruvbox
         arrterian.nix-env-selector
         jnoortheen.nix-ide

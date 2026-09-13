@@ -81,6 +81,7 @@
     qbittorrent
 
     # A/V?
+    # TODO: come up with a better name for this category
     evince # Document viewer
     loupe # Image viewer
     mpv # Video player
