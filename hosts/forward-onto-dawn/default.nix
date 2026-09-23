@@ -1,4 +1,5 @@
-{ config, lib, pkgs, inputs, prev, ... }: {
+{ config, lib, pkgs, inputs, prev, ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ../common
@@ -9,7 +10,7 @@
     enable = true;
     theme = "framework";
   };
-# networking.networkmanager.enable = true;
+  # networking.networkmanager.enable = true;
   # services.openssh = {
   #   enable = true;
   #   openFirewall = true;
@@ -23,7 +24,7 @@
   #   };
   # };
   networking.hostName = "forward-onto-dawn";
-  
+
 
   hardware.amdgpu = {
     opencl.enable = true;
@@ -34,10 +35,10 @@
   services.blueman.enable = true;
   # boot.kernelParams = [ "button.lid_init_state=open" ];
   services.logind.settings.Login = {
-  HandleLidSwitch = "suspend";
-  HandleLidSwitchExternalPower = "lock";
-  HandleLidSwitchDocked = "ignore";
-};
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchExternalPower = "lock";
+    HandleLidSwitchDocked = "ignore";
+  };
 
   # Services
   services.power-profiles-daemon.enable = true;

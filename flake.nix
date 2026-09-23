@@ -1,3 +1,4 @@
+# TODO: Remove unused dependencies for .nix file heading thingymabobbers (attribute sets?)
 {
   description = "WHAT THE FUCK IS A FLAKE (to the tune of 'WHAT THE FUCK IS A KILOMETER')";
 
@@ -37,6 +38,10 @@
     sops-nix = { 
       url ="github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-secrets = {
+      url = "git+ssh://git@github.com/semicolon1304/nixos-secrets?shallow=1&ref=main";
+      flake = false;
     };
 
   };

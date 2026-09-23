@@ -24,6 +24,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # TODO: Fix categorizations
+
     # Essentials
     kitty
     nautilus
@@ -111,6 +113,8 @@
     nixos-icons
     spice-gtk
     # winboat
+    age
+    sops
   ];
   # Move some of this to per-system packages.nix
   services.flatpak.packages = [
