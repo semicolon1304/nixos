@@ -6,6 +6,7 @@
   programs.zsh.enable = true;
   programs.git.enable = true;
   programs.neovim.enable = true;
+  programs.zsh.ohMyZsh.enable = true;
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
   programs.nh = {
@@ -35,7 +36,7 @@
     home-manager
     brightnessctl
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    
+
 
     # Terminal Utilities
     btop
@@ -55,23 +56,23 @@
 
 
     # Programming
-      # Languages
-      python3
-      gcc
-      dotnet-aspnetcore
-      jdk
-      rustc
-      cargo
-      ruby
-    
-      # IDEs / Language Servers
-      jetbrains.rider
-      #jetbrains.idea-oss
-      #jetbrains.rust-rover
-      nixd
-      ruby-lsp # This may be doing nothing currently
-      nixpkgs-fmt
-      android-tools
+    # Languages
+    python3
+    gcc
+    dotnet-aspnetcore
+    jdk
+    rustc
+    cargo
+    ruby
+
+    # IDEs / Language Servers
+    jetbrains.rider
+    #jetbrains.idea-oss
+    #jetbrains.rust-rover
+    nixd
+    ruby-lsp # This may be doing nothing currently
+    nixpkgs-fmt
+    android-tools
 
     # Games
     prismlauncher
@@ -79,6 +80,7 @@
     poptracker
     protontricks
     lumafly
+    dolphin-emu
 
     # ...Networking?
     proton-vpn
@@ -113,11 +115,15 @@
     nixos-icons
     spice-gtk
     # winboat
-    age
+    orca-slicer
+<<<<<<< Updated upstream
     sops
+    age
+=======
+>>>>>>> Stashed changes
   ];
   # Move some of this to per-system packages.nix
   services.flatpak.packages = [
-      "org.freac.freac"
-    ];
+    "org.freac.freac"
+  ];
 }

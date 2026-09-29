@@ -41,12 +41,14 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"), { locked = true
 -- Application shortcuts
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd("kitten quick-access-terminal"))
 hl.bind(mainMod .. " + F", hl.dsp.exec_cmd("zen-beta"))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("codium --ozone-platform=wayland"))
 -- hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("webcord"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("vesktop"))
 
 hl.bind("ALT + Space", hl.dsp.exec_cmd("noctalia msg panel-toggle launcher"))
+
 
 -- Misc
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("eject"))

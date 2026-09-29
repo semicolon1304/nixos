@@ -28,6 +28,7 @@ in
   };
   # Set your time zone.
   time.timeZone = "America/Chicago";
+  time.hardwareClockInLocalTime = true;
 
   # Networking
   networking.networkmanager.enable = true;
@@ -79,7 +80,15 @@ in
 
     users.zack = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
+      extraGroups = [ "wheel" "networkmanager" "libvirtd" "keys" ];
+      shell = pkgs.zsh;
+      # hashedPasswordFile = config.sops.secrets.zack_passwd.path;
+      hashedPassword = "$y$j9T$Sj0N3Fw42jE1x1/0FlRcS0$MSnX2IATmfWKZ8UcxW/2RCpcKFyuPgVkigLj1DWUqTD";
+      # packages = with pkgs; [];
+    };
+    users.test = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "networkmanager" ];
       shell = pkgs.zsh;
       # hashedPasswordFile = config.sops.secrets.zack_passwd.path;
       # packages = with pkgs; [];

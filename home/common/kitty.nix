@@ -11,7 +11,7 @@ in {
     font.name = font-name;
     font.size = lib.mkDefault 12;
     quickAccessTerminalConfig = {
-      lines = lib.mkDefault 5;
+      lines = lib.mkDefault 15;
       background_opacity = lib.mkDefault 0.75;
     };
     settings = {
@@ -21,5 +21,6 @@ in {
     keybindings = {
       "super+shift+enter" = "new_os_window_with_cwd";
     };
+
   };
 }
