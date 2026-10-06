@@ -21,13 +21,8 @@
     })
 
     qbittorrent
-<<<<<<< Updated upstream
     asunder
     dolphin-emu
-=======
-    balatro-mod-manager
-    asunder
->>>>>>> Stashed changes
   ];
   services.flatpak.packages = [
     "xyz.rust4diva.Rust4Diva"

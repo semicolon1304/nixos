@@ -87,6 +87,7 @@
     tailscale
     dnsmasq # Needed for vm
     qbittorrent
+    filezilla
 
     # A/V?
     # TODO: come up with a better name for this category
@@ -114,12 +115,13 @@
     swtpm # TPM for windows vm
     nixos-icons
     spice-gtk
-    # winboat
     orca-slicer
     sops
     age
     ssh-to-age
-    cifs-utils
+    # cifs-utils
+    plasticity
+    picard
   ];
   # Move some of this to per-system packages.nix
   services.flatpak.packages = [
