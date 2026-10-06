@@ -119,6 +119,7 @@
     sops
     age
     ssh-to-age
+    cifs-utils
   ];
   # Move some of this to per-system packages.nix
   services.flatpak.packages = [

@@ -6,14 +6,14 @@
     # systemd.enable = true;
     configType = "lua";
     extraConfig = lib.strings.join "" [
-      (builtins.readFile ./hypr/configs/animations.lua)
-      (builtins.readFile ./hypr/configs/autostart.lua)
-      (builtins.readFile ./hypr/configs/env.lua)
-      (builtins.readFile ./hypr/configs/keybinds.lua)
-      (builtins.readFile (./. + "/hypr/configs/${osConfig.networking.hostName}_monitors.lua"))
-      (builtins.readFile ./hypr/configs/settings.lua)
-      (builtins.readFile ./hypr/configs/windowrules.lua)
-      (builtins.readFile (./. + "/hypr/configs/${osConfig.networking.hostName}_workspaces.lua"))
+      (builtins.readFile ./hypr/animations.lua)
+      (builtins.readFile ./hypr/autostart.lua)
+      (builtins.readFile ./hypr/env.lua)
+      (builtins.readFile ./hypr/keybinds.lua)
+      (builtins.readFile (./. + "/hypr/${osConfig.networking.hostName}_monitors.lua"))
+      (builtins.readFile ./hypr/settings.lua)
+      (builtins.readFile ./hypr/windowrules.lua)
+      (builtins.readFile (./. + "/hypr/${osConfig.networking.hostName}_workspaces.lua"))
     ];
     systemd.variables = [ "--all" ]; # fixes theme in dbus activated apps?
   };

@@ -7,7 +7,6 @@ in
     ./packages.nix
   ];
 
-  # TODO: Setup sops-nix
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     loader = {
@@ -59,19 +58,18 @@ in
   xdg.autostart.enable = true;
   # Mount SMB Share(s)
   # TODO: Use secrets for authentication
-  # TODO: Also, make it so that this actuallly works
   fileSystems."/mnt/Media" =
     {
       device = "//192.168.86.27/Media";
       fsType = "cifs";
       options = [
+        # "credentials=${config.sops.secrets.smb_credentials.path}"
         "credentials=/home/zack/.credentials"
         "x-systemd.automount"
         "noauto"
-        "x-systemd.requires=tailscaled.serivce"
-        "x-systemd.after=tailscale.service"
         "x-systemd.idle-timeout=60"
         "x-systemd.mount-timeout=30"
+        "x-systemd.device-timeout=5s"
         "uid=1000,gid=100"
       ];
     };
@@ -80,33 +78,32 @@ in
 
     users.zack = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "libvirtd"];
-      shell = pkgs.zsh;
-      # hashedPasswordFile = config.sops.secrets.zack_passwd.path;
-      hashedPassword = "$y$j9T$Sj0N3Fw42jE1x1/0FlRcS0$MSnX2IATmfWKZ8UcxW/2RCpcKFyuPgVkigLj1DWUqTD";
-      # packages = with pkgs; [];
-    };
-    users.test = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
       shell = pkgs.zsh;
       hashedPasswordFile = config.sops.secrets.zack_passwd.path;
       # packages = with pkgs; [];
     };
+    # users.test = {
+    #   isNormalUser = true;
+    #   extraGroups = [ "wheel" "networkmanager" ];
+    #   shell = pkgs.zsh;
+    #   hashedPasswordFile = config.sops.secrets.zack_passwd.path;
+    #   # packages = with pkgs; [];
+    # };
   };
 
   sops = {
     defaultSopsFile = "${secrets_path}/secrets.yaml";
     age = {
       sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-      # keyFile = "/var/lib/sops-nix/key.txt";
-      # keyFile = "/home/zack/.config/sops/age/keys.txt";
       generateKey = true;
     };
     secrets = {
       zack_passwd = {
         neededForUsers = true;
       };
+      smb_credentials = {};
+      # forward-onto-dawn_github_ssh = {};
     };
   };
 
