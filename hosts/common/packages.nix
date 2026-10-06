@@ -116,11 +116,9 @@
     spice-gtk
     # winboat
     orca-slicer
-<<<<<<< Updated upstream
     sops
     age
-=======
->>>>>>> Stashed changes
+    ssh-to-age
   ];
   # Move some of this to per-system packages.nix
   services.flatpak.packages = [

@@ -35,14 +35,14 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     
-    # sops-nix = { 
-    #   url ="github:Mic92/sops-nix";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    # nixos-secrets = {
-    #   url = "git+ssh://git@github.com/semicolon1304/nixos-secrets?shallow=1&ref=main";
-    #   flake = false;
-    # };
+    sops-nix = { 
+      url ="github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-secrets = {
+      url = "git+ssh://git@github.com/semicolon1304/nixos-secrets?shallow=1&ref=main";
+      flake = false;
+    };
 
   };
 
@@ -54,7 +54,7 @@
     , nix-flatpak
     , nix-vscode-extensions
     , nixpkgs-unstable
-    # , sops-nix
+    , sops-nix
     , ...
     } @ inputs:
     let
@@ -78,7 +78,7 @@
           };
           modules = [
             ./hosts/forward-onto-dawn
-            # sops-nix.nixosModules.sops
+            sops-nix.nixosModules.sops
             home-manager.nixosModules.default
             {
               home-manager = {

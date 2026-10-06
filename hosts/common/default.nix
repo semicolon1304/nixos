@@ -76,11 +76,11 @@ in
       ];
     };
   users = {
-    # mutableUsers = false; # Needed to set password declaratively
+    mutableUsers = false; # Needed to set password declaratively
 
     users.zack = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" "libvirtd" "keys" ];
+      extraGroups = [ "wheel" "networkmanager" "libvirtd"];
       shell = pkgs.zsh;
       # hashedPasswordFile = config.sops.secrets.zack_passwd.path;
       hashedPassword = "$y$j9T$Sj0N3Fw42jE1x1/0FlRcS0$MSnX2IATmfWKZ8UcxW/2RCpcKFyuPgVkigLj1DWUqTD";
@@ -90,25 +90,25 @@ in
       isNormalUser = true;
       extraGroups = [ "wheel" "networkmanager" ];
       shell = pkgs.zsh;
-      # hashedPasswordFile = config.sops.secrets.zack_passwd.path;
+      hashedPasswordFile = config.sops.secrets.zack_passwd.path;
       # packages = with pkgs; [];
     };
   };
 
-  # sops = {
-  #   defaultSopsFile = "${secrets_path}/secrets.yaml";
-  #   age = {
-  #     sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-  #     keyFile = "/var/lib/sops-nix/key.txt";
-  #     # keyFile = "/home/zack/.config/sops/age/keys.txt";
-  #     generateKey = true;
-  #   };
-  #   secrets = {
-  #     zack_passwd = {
-  #       neededForUsers = true;
-  #     };
-  #   };
-  # };
+  sops = {
+    defaultSopsFile = "${secrets_path}/secrets.yaml";
+    age = {
+      sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      # keyFile = "/var/lib/sops-nix/key.txt";
+      # keyFile = "/home/zack/.config/sops/age/keys.txt";
+      generateKey = true;
+    };
+    secrets = {
+      zack_passwd = {
+        neededForUsers = true;
+      };
+    };
+  };
 
 
 
