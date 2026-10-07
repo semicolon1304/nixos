@@ -105,7 +105,7 @@
           };
           modules = [
             ./hosts/in-amber-clad
-            # sops-nix.nixosModules.sops
+            sops-nix.nixosModules.sops
             home-manager.nixosModules.default
             {
               home-manager = {

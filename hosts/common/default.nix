@@ -95,14 +95,15 @@ in
   sops = {
     defaultSopsFile = "${secrets_path}/secrets.yaml";
     age = {
-      sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-      generateKey = true;
+      # sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+      # generateKey = true;
+      keyFile = "/var/lib/sops-nix/key.txt";
     };
     secrets = {
       zack_passwd = {
         neededForUsers = true;
       };
-      smb_credentials = {};
+      # smb_credentials = {};
       # forward-onto-dawn_github_ssh = {};
     };
   };
