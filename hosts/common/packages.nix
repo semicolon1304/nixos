@@ -118,8 +118,6 @@
     orca-slicer
     sops
     age
-    ssh-to-age
-    # cifs-utils
     plasticity
     picard
   ];
